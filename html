@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>電子卡片</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #000;
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 1.5s ease; /* 淡入效果 */
+    }
+    img.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <img id="card" src="img1.jpg" alt="電子卡片">
+
+  <script>
+    const images = ["img1.jpg", "img2.jpg", "img3.jpg"];
+    let index = 0;
+    const card = document.getElementById("card");
+
+    // 頁面載入後觸發淡入效果
+    window.onload = () => {
+      card.classList.add("show");
+    };
+
+    card.addEventListener("click", () => {
+      if (index < images.length - 1) {
+        index++;
+        card.src = images[index];
+        // 換圖之後保持直接顯示，不再做淡入
+        card.classList.add("show");
+      }
+    });
+  </script>
+</body>
+</html>
